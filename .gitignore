@@ -1,0 +1,13 @@
+# Gradle
+.gradle/
+build/
+
+# Java
+*.class
+
+# IDE
+.idea/
+*.iml
+
+# Others
+*.log
