@@ -1,0 +1,38 @@
+#spring:
+#  security:
+#    saml2:
+#      relyingparty:
+#        registration:
+#          my-sp:
+#            identityprovider:
+#              entity-id: https://idp.example.com/entity
+#              sso-url: https://idp.example.com/sso
+#              verification:
+#                credentials:
+#                  - certificate-location: "classpath:idp-certificate.pem"
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/authee
+    username: autheeuser
+    password: secret
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: none # Disable to avoid conflicts with Liquibase
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+  liquibase:
+    change-log: classpath:/db/changelog/db.changelog-master.yaml
+    enabled: true
+
+server:
+  port: 8080
+
+logging:
+  level:
+    org.springframework.security: INFO
+    liquibase: DEBUG
